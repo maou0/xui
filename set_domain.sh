@@ -14,6 +14,7 @@ apt install openssl curl ca-certificates certbot -y
 hostnamectl set-hostname "$domain"
 curl "https://freemyip.com/update?token=${token}&domain=${domain}"
 (crontab -l; echo "30 2 * * 0 curl \"https://freemyip.com/update?token=${token}&domain=${domain}\"") | crontab -
+mkdir -p /root/xui/cert/
 certbot certonly --standalone --agree-tos --register-unsafely-without-email -d "$domain"
 cp /etc/letsencrypt/live/${domain}/fullchain.pem /root/xui/cert/
 cp /etc/letsencrypt/live/${domain}/privkey.pem /root/xui/cert/
