@@ -1,4 +1,4 @@
 domain=
 token=
-ssh_port=4567
-sudo_user=testuser
+ssh_port=52133
+sudo_user=user
