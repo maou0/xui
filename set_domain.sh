@@ -2,11 +2,17 @@
 
 source bash_scripts_config
 
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
 if [[ -z "$domain" ]]; then
-    echo -e "Не указан домен в файле ./bash_scripts_config"
+    echo -e "\n${YELLOW}Не указан домен в файле ./bash_scripts_config${NC}\n"
     exit 1
 elif [[ -z "$token" ]]; then
-    echo -e "Не указан токен в файле ./bash_scripts_config"
+    echo -e "\n${YELLOW}Не указан токен в файле ./bash_scripts_config${NC}\n"
+    exit 1
+elif ((ssh_port > 65535 || ssh_port < 49152)); then
+    echo -e "\n${YELLOW}Значение ssh_port в файле ./bash_scripts_config должно быть от 49152 до 65535${NC}\n"
     exit 1
 fi
 
